@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                bat 'echo "Fail!"; exit 1'
+                bat 'node --version'
             }
         }
     }
