@@ -4,9 +4,9 @@ exports.Database = class Database {
   constructor() {
     this.connection = mysql.createConnection({
       host: 'localhost',
-      user: '???',
-      password: '???',
-      database: '???'
+      user: 'root',
+      password: 'admin',
+      database: 'dlc'
     });
 
     this.connection.connect();
