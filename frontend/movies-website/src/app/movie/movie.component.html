@@ -1,0 +1,34 @@
+
+      <div class="movie" *ngFor="let a of moviesArray; index as i">
+          <div class="movie-image"> <span class="play"><span class="name">MOTIVES</span></span> <a href="#"><img src={{moviesArray[i].image}} alt="" /></a> </div>
+          <div class="rating">
+            <p>RATING</p>
+            <div class="stars">
+              <div class="stars-in"> </div>
+            </div>
+            
+            <span class="comments">12</span> 
+            
+          </div>
+          <div><span class="title">Title : {{moviesArray[i].title}}</span></div>
+          <div><span class="genre">Genre : {{moviesArray[i].genre}}</span></div>
+          <div><span class="duration">Duration : {{moviesArray[i].duration}}</span></div>
+        </div>
+      
+<!--
+        <div class="movie" *ngFor="let a of moviesTab">
+            <div class="movie-image"> <span class="play"><span class="name">MOTIVES</span></span> <a href="#"><img src={{a.image}} alt="" /></a> </div>
+            <div><span class="title">Title : {{a.title}}</span></div>
+            <div><span class="genre">Genre : {{a.genre}}</span></div>
+            <div><span class="duration">Duration : {a.duration}}</span></div>
+            <div class="rating">
+              <p>RATING</p>
+              <div class="stars">
+                <div class="stars-in"> </div>
+              </div>
+              
+              <span class="comments">12</span> 
+           
+            </div>
+          </div>
+        -->
