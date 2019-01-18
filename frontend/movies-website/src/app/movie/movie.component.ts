@@ -1,24 +1,30 @@
 import { Component, OnInit, Input, Injectable } from '@angular/core';
 import { Film } from './movie.model';
-import { HttpClient } from '@angular/common/http';
+//import { HttpClient } from '@angular/common/http';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs';
-//import { map } from 'rxjs/operator';
-//import 'rxjs/add/observable/map';
+import { map } from 'rxjs/operators';
+//import 'rxjs/add/operator/map';
+import { FilterPipe } from '../filter.pipe';
+
 
 @Component({
   selector: 'app-movie',
   templateUrl: './movie.component.html',
-  styleUrls: ['./movie.component.css']
+  styleUrls: ['./movie.component.css'],
+  providers: [MovieComponent]
 })
+
+@Injectable()
 export class MovieComponent implements OnInit {
 
   @Input('movie') film : Film; 
   moviesArray = new Array<Film>();
   moviesTab = new Array<Film>();
 
-  constructor(/*private httpService : HttpClient*/) { 
-  
+  private _url:string="../assets/mock_data/movies.json";
+  constructor(private _http: Http) { 
+  /*
     let film1 : Film = new Film();
     film1.title = "Titanic";
     film1.genre = "Drame";
@@ -33,19 +39,27 @@ export class MovieComponent implements OnInit {
     film2.image = "assets/css/images/movie4.jpg";
     this.moviesArray.push(film1);
     this.moviesArray.push(film2);
-  
+  */
   }
 
-  //getMovies() : Observable<Array<Film>>{
-  //  return this.http.get('./movies.json')
-  //  .pipe(map((resp: Response) => resp.json()));
-  //} 
+  /*
+  getMovies() : Observable<Array<Film>>{
+    return this.http.get('./movies.json')
+    .pipe(map((resp: Response) => resp.json()));
+  } 
+  */
+
+  getMovies() : Observable<Array<Film>>{
+    return this._http.get(this._url).pipe(map((res:Response) => res.json()));
+  }
 
   ngOnInit() {
-//    this.httpService.get('./movies.json').subscribe(
-//      data => {
-//        this.moviesTab = data as Array<Film>;
-//      }
-//    );
+    
+    this.getMovies().subscribe(
+      data => {
+        this.moviesTab = data as Array<Film>;
+      }
+    );
+    console.log(this.moviesTab);
   }
 }

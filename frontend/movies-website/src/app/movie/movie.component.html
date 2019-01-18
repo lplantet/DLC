@@ -1,34 +1,55 @@
-
-      <div class="movie" *ngFor="let a of moviesArray; index as i">
-          <div class="movie-image"> <span class="play"><span class="name">MOTIVES</span></span> <a href="#"><img src={{moviesArray[i].image}} alt="" /></a> </div>
-          <div class="rating">
-            <p>RATING</p>
-            <div class="stars">
-              <div class="stars-in"> </div>
-            </div>
-            
-            <span class="comments">12</span> 
-            
-          </div>
-          <div><span class="title">Title : {{moviesArray[i].title}}</span></div>
-          <div><span class="genre">Genre : {{moviesArray[i].genre}}</span></div>
-          <div><span class="duration">Duration : {{moviesArray[i].duration}}</span></div>
-        </div>
-      
-<!--
-        <div class="movie" *ngFor="let a of moviesTab">
-            <div class="movie-image"> <span class="play"><span class="name">MOTIVES</span></span> <a href="#"><img src={{a.image}} alt="" /></a> </div>
-            <div><span class="title">Title : {{a.title}}</span></div>
-            <div><span class="genre">Genre : {{a.genre}}</span></div>
-            <div><span class="duration">Duration : {a.duration}}</span></div>
-            <div class="rating">
-              <p>RATING</p>
-              <div class="stars">
-                <div class="stars-in"> </div>
+<div id="shell">
+  <div id="header">
+    <h1 id="logo">Movies Website</h1>
+    <div id="navigation"></div>
+    <div id="sub-navigation">
+      <div id="search">
+        <form id="filter">
+            <label> Rechercher un film </label>
+            <input type="text" [(ngModel)]="term" name="something"/>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div id="main">
+    <div id="content">
+      <div class="box">
+        <div *ngFor="let movie of moviesTab | filter:term; index as i">
+            <div *ngIf="(((i+1)%6)!=0); else lastMovie">
+              <div class="movie">
+                      <div class="movie-image"> <span class="play"><span class="name">MOTIVES</span></span> <a href="#"><img src={{movie.image}} alt="" /></a> </div>
+                      <div><span class="title">Title : {{movie.title}}</span></div>
+                      <div><span class="genre">Genre : {{movie.genre}}</span></div>
+                      <div><span class="duration">Duration : {{movie.duration}}</span></div>
+                      <div class="rating">
+                        <p>RATING</p>
+                        <div class="stars">
+                          <div class="stars-in"> </div>
+                        </div>
+                      </div>
               </div>
-              
-              <span class="comments">12</span> 
-           
-            </div>
-          </div>
-        -->
+            </div> 
+            <ng-template #lastMovie>
+              <div class="movie last">
+                <div class="movie-image"> <span class="play"><span class="name">MOTIVES</span></span> <a href="#"><img src={{movie.image}} alt="" /></a> </div>
+                <div><span class="title">Title : {{movie.title}}</span></div>
+                <div><span class="genre">Genre : {{movie.genre}}</span></div>
+                <div><span class="duration">Duration : {{movie.duration}}</span></div>
+                <div class="rating">
+                  <p>RATING</p>
+                  <div class="stars">
+                    <div class="stars-in"> </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+        </div>
+        <div class="cl">&nbsp;</div>
+      </div>
+    </div>
+    <div class="cl">&nbsp;</div>
+  </div>
+  <div id="footer">
+    <div style="clear:both;"></div>
+  </div>
+</div>

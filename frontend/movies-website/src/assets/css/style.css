@@ -242,8 +242,8 @@ h1#logo{
 	padding-bottom:11px;
 }
 .box .head h2 {
-	float:left;
-	display:inline;
+	float: left;
+	display: inline;
 }
 .box .movie {
 	width:152px;
@@ -251,6 +251,7 @@ h1#logo{
 	padding-right:12px;
 }
 .movie-image {
+	padding-top: 40px;
 	float:left;
 	width:152px;
 	height:214px;

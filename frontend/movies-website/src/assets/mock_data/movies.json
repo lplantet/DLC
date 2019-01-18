@@ -1,0 +1,100 @@
+[
+    {
+        "title" : "X-MAN",
+        "genre" : "Action",
+        "duration" : "156 min",
+        "rating" : "3",
+        "image" : "assets/css/images/movie1.jpg"
+    },
+    {
+        "title" : "SPIDER MAN 2",
+        "genre" : "Drame",
+        "duration" : "134 min",
+        "rating" : "5",
+        "image" : "assets/css/images/movie2.jpg"
+    },
+    {
+        "title" : "SPIDER MAN 3",
+        "genre" : "Action",
+        "duration" : "166 min",
+        "rating" : "4",
+        "image" : "assets/css/images/movie3.jpg"
+    },
+    {
+        "title" : "VALKYRIE",
+        "genre" : "Comédie",
+        "duration" : "110 min",
+        "rating" : "1",
+        "image" : "assets/css/images/movie4.jpg"
+    },
+    {
+        "title" : "GLADIATOR",
+        "genre" : "Romance",
+        "duration" : "144 min",
+        "rating" : "2",
+        "image" : "assets/css/images/movie5.jpg"
+    },
+    {
+        "title" : "ICE AGE",
+        "genre" : "Comédie",
+        "duration" : "100 min",
+        "rating" : "5",
+        "image" : "assets/css/images/movie6.jpg"
+    },
+    {
+        "title" : "TRANSFORMERS",
+        "genre" : "Action",
+        "duration" : "131 min",
+        "rating" : "4",
+        "image" : "assets/css/images/movie7.jpg"
+    },
+    {
+        "title" : "MAGNETO",
+        "genre" : "Drame",
+        "duration" : "166 min",
+        "rating" : "5",
+        "image" : "assets/css/images/movie8.jpg"
+    },
+    {
+        "title" : "GLADIATOR",
+        "genre" : "Romance",
+        "duration" : "144 min",
+        "rating" : "2",
+        "image" : "assets/css/images/movie5.jpg"
+    },
+    {
+        "title" : "ICE AGE",
+        "genre" : "Comédie",
+        "duration" : "100 min",
+        "rating" : "5",
+        "image" : "assets/css/images/movie6.jpg"
+    },
+    {
+        "title" : "TRANSFORMERS",
+        "genre" : "Action",
+        "duration" : "131 min",
+        "rating" : "4",
+        "image" : "assets/css/images/movie7.jpg"
+    },
+    {
+        "title" : "X-MAN",
+        "genre" : "Action",
+        "duration" : "156 min",
+        "rating" : "3",
+        "image" : "assets/css/images/movie1.jpg"
+    },
+    {
+        "title" : "SPIDER MAN 2",
+        "genre" : "Drame",
+        "duration" : "134 min",
+        "rating" : "5",
+        "image" : "assets/css/images/movie2.jpg"
+    },
+    {
+        "title" : "SPIDER MAN 3",
+        "genre" : "Action",
+        "duration" : "166 min",
+        "rating" : "4",
+        "image" : "assets/css/images/movie3.jpg"
+    }
+]
