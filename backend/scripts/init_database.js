@@ -22,11 +22,18 @@ connection.query('USE dlc;');
 // Create the movies table
 console.log('Creating table \'movies\'...');
 connection.query(`CREATE TABLE movies (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  title VARCHAR(255) NOT NULL,
+  title VARCHAR(255) PRIMARY KEY,
   duration INT NOT NULL,
+  rating DECIMAL(3,2) NOT NULL,
+  poster VARCHAR(255)
+);`);
+
+// Create the genres table
+console.log('Creating table \'genres\'...');
+connection.query(`CREATE TABLE genres (
+  title VARCHAR(255) PRIMARY KEY,
   genre VARCHAR(255) NOT NULL,
-  rating DECIMAL(3,2) NOT NULL
+  FOREIGN KEY (title) REFERENCES movies(title)
 );`);
 
 console.log('Closing connection...');

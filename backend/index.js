@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
 app.get('/search', (req, res) => {
   const film = req.query.film;
   
-  if (!film && film !== '') {
+  if (!film) {
     res.status(400).end();
     return;
   }
