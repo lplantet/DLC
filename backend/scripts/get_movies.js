@@ -35,6 +35,7 @@ async function getMovies() {
       const res = JSON.parse(await request.get(`${API_ENDPOINT}/discover/movie?api_key=${API_KEY}&year=${year}&sort_by=popularity.desc&page=${page}`));
       res.results.forEach(movie => {
         movies.push({
+          'id': movie.id,
           'title': movie.title,
           'duration': 0,
           'genres': movie.genre_ids,

@@ -17,8 +17,8 @@ connection.connect();
 // Insert movies into the database
 console.log('Inserting movies...');
 movies.forEach(movie => {
-  connection.query(`INSERT INTO movies (title, duration, rating, poster) VALUES (?, ?, ?, ?);`,
-    [movie.title, movie.duration, movie.rating, movie.poster]
+  connection.query(`INSERT INTO movies (id, title, duration, rating, poster) VALUES (?, ?, ?, ?, ?);`,
+    [movie.id, movie.title, movie.duration, movie.rating, movie.poster]
   );
 });
 
@@ -26,8 +26,8 @@ movies.forEach(movie => {
 console.log('Inserting genres...');
 movies.forEach(movie => {
   movie.genres.forEach(genre => {
-    connection.query(`INSERT INTO genres (title, genre) VALUES (?, ?);`,
-      [movie.title, genre]
+    connection.query(`INSERT INTO genres (movieID, genre) VALUES (?, ?);`,
+      [movie.id, genre]
   );
   })
 });
