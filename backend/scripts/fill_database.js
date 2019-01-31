@@ -1,38 +1,56 @@
 const mysql = require('mysql');
 const fs = require('fs');
 
-// Load movies from local file
-const movies = JSON.parse(fs.readFileSync(__dirname + '/movies.json', 'utf8'));
+main();
 
-console.log('Connecting to mysql...');
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'admin',
-  database: 'dlc'
-});
+async function main() {
+  // Load movies from local file
+  const movies = JSON.parse(fs.readFileSync(__dirname + '/movies.json', 'utf8'));
 
-connection.connect();
+  console.log('Connecting to mysql...');
+  const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'admin',
+    database: 'dlc'
+  });
 
-// Insert movies into the database
-console.log('Inserting movies...');
-movies.forEach(movie => {
-  connection.query(`INSERT INTO movies (id, title, duration, rating, poster) VALUES (?, ?, ?, ?, ?);`,
-    [movie.id, movie.title, movie.duration, movie.rating, movie.poster]
-  );
-});
+  connection.connect();
+  let moviesAdded = 0;
 
-// Insert genres into the database
-console.log('Inserting genres...');
-movies.forEach(movie => {
-  movie.genres.forEach(genre => {
-    connection.query(`INSERT INTO genres (movieID, genre) VALUES (?, ?);`,
-      [movie.id, genre]
-  );
-  })
-});
+  // Insert movies into the database
+  console.log('Inserting movies...');
+  const promisesForMovies = [];
+  movies.forEach(movie => {
+    promisesForMovies.push(new Promise((resolve, reject) => {
+      connection.query(`INSERT INTO movies (id, title, duration, rating, poster) VALUES (?, ?, ?, ?, ?);`,
+        [movie.id, movie.title, movie.duration, movie.rating, movie.poster],
+        (error, results) => {
+          if (!error) {
+            moviesAdded++;
+            resolve();
+          } else {
+            reject(movie);
+          }
+        }
+      );
+    }));
+  });
 
-console.log('Closing connection...');
-connection.end();
+  await Promise.all(promisesForMovies);
 
-console.log(`\n${movies.length} movies added to the database`);
+  // Insert genres into the database
+  console.log('Inserting genres...');
+  movies.forEach(movie => {
+    movie.genres.forEach(genre => {
+      connection.query(`INSERT INTO genres (movieID, genre) VALUES (?, ?);`,
+        [movie.id, genre]
+    );
+    })
+  });
+
+  console.log('Closing connection...');
+  connection.end();
+
+  console.log(`\n${moviesAdded} movies added to the database`);
+}
