@@ -14,7 +14,7 @@ exports.Database = class Database {
 
   search(film) {
     return new Promise((resolve, reject) => {
-      this.connection.query('SELECT * FROM movies WHERE title LIKE ?', [film], (error, results) => {
+      this.connection.query(`SELECT * FROM movies WHERE title LIKE '%${film}%' LIMIT 100`, (error, results) => {
         if (error) reject(error);
         resolve(results);
       });
