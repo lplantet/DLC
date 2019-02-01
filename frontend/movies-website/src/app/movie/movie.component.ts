@@ -21,6 +21,7 @@ export class MovieComponent implements OnInit {
   @Input('movie') film : Film; 
   moviesArray = new Array<Film>();
   moviesTab = new Array<Film>();
+  term : string;
 
   //private _url:string="../assets/mock_data/movies.json";
   private _url:string="http://148.60.11.164:3000/search";
@@ -29,17 +30,18 @@ export class MovieComponent implements OnInit {
 
   }
 
-  getMovies() : Observable<any>{
-    return this._http.get(this._url, {params: {film: "Aquaman"}});//.pipe(map((res:Response) => res.json()));
+  getMovies() {
+    this._http.get(this._url, {params: {film: this.term}}).subscribe(data => {
+      this.moviesTab = data as Array<Film>;
+    });
   }
 
   ngOnInit() {
-    
+    /*
     this.getMovies().subscribe(
       data => {
         this.moviesTab = data as Array<Film>;
       }
-    );
-    console.log(this.moviesTab);
+    );*/
   }
 }
