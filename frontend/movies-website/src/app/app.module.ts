@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MovieComponent } from './movie/movie.component';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FilterPipe } from './filter.pipe';
 import { FormsModule } from '@angular/forms';
 
@@ -18,6 +19,7 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpModule,
+    HttpClientModule,
     FormsModule
   ],
   providers: [],

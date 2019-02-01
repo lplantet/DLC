@@ -1,8 +1,11 @@
 const express = require('express');
+const cors = require('cors');
 const { Database } = require('./database.js');
 
 const app = express();
 const database = new Database();
+
+app.use(cors());
 
 app.get('/search', (req, res) => {
   const film = req.query.film;
