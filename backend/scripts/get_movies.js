@@ -25,25 +25,21 @@ async function main() {
 
 async function getMovies() {
   movies = [];
-  
-  // For each year
-  for (let year = 2000; year < 2019; year++) {
-    console.log(`Loading movies from ${year}...`);
 
-    // For each page of results
-    for (let page = 1; page < 11; page++) {
-      const res = JSON.parse(await request.get(`${API_ENDPOINT}/discover/movie?api_key=${API_KEY}&year=${year}&sort_by=popularity.desc&page=${page}`));
-      res.results.forEach(movie => {
-        movies.push({
-          'id': movie.id,
-          'title': movie.title,
-          'duration': 0,
-          'genres': movie.genre_ids,
-          'rating': movie.vote_average,
-          'poster': movie.poster_path
-        });
+  // For each page of results (20 movies)
+  for (let page = 1; page < 501; page++) {
+    const res = JSON.parse(await request.get(`${API_ENDPOINT}/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&page=${page}`));
+    res.results.forEach(movie => {
+      console.log(movie.title);
+      movies.push({
+        'id': movie.id,
+        'title': movie.title,
+        'duration': 0,
+        'genres': movie.genre_ids,
+        'rating': movie.vote_average,
+        'poster': movie.poster_path
       });
-    }
+    });
   }
 
   return movies;
