@@ -7,7 +7,7 @@ const database = new Database();
 
 app.use(cors());
 
-app.get('/search', (req, res) => {
+app.get('/search', async (req, res) => {
   const film = req.query.film;
   
   if (!film) {
@@ -15,7 +15,7 @@ app.get('/search', (req, res) => {
     return;
   }
 
-  const data = database.search(film);
+  const data = await database.search(film);
   
   res.status(200).send(data);
 });

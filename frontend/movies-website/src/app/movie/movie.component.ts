@@ -30,7 +30,7 @@ export class MovieComponent implements OnInit {
   }
 
   getMovies() : Observable<any>{
-    return this._http.get(this._url, {params: {film: "Aquaman"}}).pipe(map((res:Response) => res.json()));
+    return this._http.get(this._url, {params: {film: "Aquaman"}});//.pipe(map((res:Response) => res.json()));
   }
 
   ngOnInit() {
