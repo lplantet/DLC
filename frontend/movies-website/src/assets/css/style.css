@@ -292,6 +292,9 @@ h1#logo{
 .box .last {
 	padding:0;
 }
+.ratings {
+	color: black;
+}
 .rating {
 	float:left;
 	width:152px;
