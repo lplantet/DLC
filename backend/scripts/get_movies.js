@@ -16,7 +16,7 @@ async function main() {
 
   // Fetch movie genres and update them in movies
   const movieGenres = await getMovieGenres();
-  movies.forEach(movie => movie.genres = movie.genres.map(genre => movieGenres[genre]));
+  movies.forEach(movie => movie.genres = movie.genres.map(genre => movieGenres[genre]).join());
   
   // Write movies in a file
   fs.writeFileSync(__dirname + '/movies.json', JSON.stringify(movies), 'utf8');

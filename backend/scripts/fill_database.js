@@ -24,8 +24,8 @@ async function main() {
   const promisesForMovies = [];
   movies.forEach(movie => {
     promisesForMovies.push(new Promise((resolve, reject) => {
-      connection.query(`INSERT INTO movies (id, title, duration, rating, image) VALUES (?, ?, ?, ?, ?);`,
-        [movie.id, movie.title, movie.duration, movie.rating, movie.poster],
+      connection.query(`INSERT INTO movies (id, title, duration, rating, genres, image) VALUES (?, ?, ?, ?, ?, ?);`,
+        [movie.id, movie.title, movie.duration, movie.rating, movie.genres, movie.poster],
         (error, results) => {
           if (!error) {
             moviesAdded++;
@@ -46,16 +46,6 @@ async function main() {
 
   // Clear movies that were not added
   movies = movies.filter(movie => !failedMovies.includes(movie.title));
-
-  // Insert genres into the database
-  console.log('Inserting genres...');
-  movies.forEach(movie => {
-    movie.genres.forEach(genre => {
-      connection.query(`INSERT INTO genres (movieID, genre) VALUES (?, ?);`,
-        [movie.id, genre]
-    );
-    })
-  });
 
   console.log('Closing connection...');
   connection.end();

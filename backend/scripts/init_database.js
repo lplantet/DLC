@@ -26,16 +26,8 @@ connection.query(`CREATE TABLE movies (
   title VARCHAR(255) NOT NULL,
   duration INT NOT NULL,
   rating DECIMAL(3,2) NOT NULL,
+  genres VARCHAR(255),
   image VARCHAR(255)
-);`);
-
-// Create the genres table
-console.log('Creating table \'genres\'...');
-connection.query(`CREATE TABLE genres (
-  movieID INT NOT NULL,
-  genre VARCHAR(255) NOT NULL,
-  PRIMARY KEY (movieID, genre),
-  FOREIGN KEY (movieID) REFERENCES movies(id)
 );`);
 
 console.log('Closing connection...');
