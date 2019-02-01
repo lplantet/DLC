@@ -4,10 +4,6 @@ const { Database } = require('./database.js');
 const app = express();
 const database = new Database();
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
-
 app.get('/search', (req, res) => {
   const film = req.query.film;
   

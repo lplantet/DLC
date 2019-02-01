@@ -13,10 +13,12 @@ exports.Database = class Database {
   }
 
   search(film) {
-    this.connection.query('SELECT 1 + 1 AS test', (error, results) => {
-      if (error) throw error;
-      return results[0].test;
-    });
+    return new Promise((resolve, reject) => {
+      this.connection.query('SELECT * FROM movies WHERE title LIKE ?', [film], (error, results) => {
+        if (error) reject(error);
+        resolve(results);
+      });
+    })
   }
 }
 

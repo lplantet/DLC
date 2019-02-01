@@ -22,7 +22,9 @@ export class MovieComponent implements OnInit {
   moviesArray = new Array<Film>();
   moviesTab = new Array<Film>();
 
-  private _url:string="../assets/mock_data/movies.json";
+  //private _url:string="../assets/mock_data/movies.json";
+  private _url:string="localhost:3000/search";
+  
   constructor(private _http: Http) { 
   /*
     let film1 : Film = new Film();
@@ -50,7 +52,7 @@ export class MovieComponent implements OnInit {
   */
 
   getMovies() : Observable<Array<Film>>{
-    return this._http.get(this._url).pipe(map((res:Response) => res.json()));
+    return this._http.get(this._url, {params: {film: "Aquaman"}}).pipe(map((res:Response) => res.json()));
   }
 
   ngOnInit() {

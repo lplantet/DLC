@@ -26,7 +26,7 @@ connection.query(`CREATE TABLE movies (
   title VARCHAR(255) NOT NULL,
   duration INT NOT NULL,
   rating DECIMAL(3,2) NOT NULL,
-  poster VARCHAR(255)
+  image VARCHAR(255)
 );`);
 
 // Create the genres table

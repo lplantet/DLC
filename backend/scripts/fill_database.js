@@ -24,7 +24,7 @@ async function main() {
   const promisesForMovies = [];
   movies.forEach(movie => {
     promisesForMovies.push(new Promise((resolve, reject) => {
-      connection.query(`INSERT INTO movies (id, title, duration, rating, poster) VALUES (?, ?, ?, ?, ?);`,
+      connection.query(`INSERT INTO movies (id, title, duration, rating, image) VALUES (?, ?, ?, ?, ?);`,
         [movie.id, movie.title, movie.duration, movie.rating, movie.poster],
         (error, results) => {
           if (!error) {
