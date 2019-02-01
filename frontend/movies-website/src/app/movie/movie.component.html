@@ -15,7 +15,7 @@
   <div id="main">
     <div id="content">
       <div class="box">
-        <div *ngFor="let movie of moviesTab | filter:term; index as i">
+        <div *ngFor="let movie of moviesTab | index as i">
             <div *ngIf="(((i+1)%6)!=0); else lastMovie">
               <div class="movie">
                       <div class="movie-image"> <span class="play"><span class="name">MOTIVES</span></span> <a href="#"><img src={{movie.image}} alt="" /></a> </div>
